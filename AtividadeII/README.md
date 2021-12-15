@@ -18,7 +18,7 @@
 
     > Replicar aula e incluir a migration: fornecedor, Model Fornecedor, Controller: FornecedorController
 
-4 - Data de entrega: até 07-10 as 21:00, postar codigo em seu repositorio do github:
+4 - postar codigo em seu repositorio do github:
 ###__Exemplo
 
 5. Colocar um arquivo em pdf, na pasta da Atividade(referenciada) na branch main, com o print da execução das atividades acima adotando o seguinte modelo para nome do arquivo: print-AtividadeII-Nome-Sobrenome.pdf
