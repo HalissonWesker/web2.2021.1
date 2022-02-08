@@ -6,18 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Produto;
-use App\Models\Venda;
+use App\Models\Entrada;
 
-class ItensVenda extends Model
+class ItensEntrada extends Model
 {
     use HasFactory;
 
-    protected $table = "itens_vendas";
+    protected $table = "itens_entradas";
 
     protected $fillable = [
         'idproduto',
-        'idvenda',
-        'valorunitario',
+        'identrada',
+        'icms',
+        'ipi',
+        'frete',
+        'precocompra',
         'quantidade',
     ];
 
@@ -26,7 +29,8 @@ class ItensVenda extends Model
         return $this->belongsTo(Produto::class, 'idproduto', 'id');
     }
 
-    public function venda(){
-        return $this->belongsTo(Venda::class, 'idvenda', 'id');
+    public function entrada()
+    {
+        return $this->belongsTo(Entrada::class, 'identrada', 'id');
     }
 }

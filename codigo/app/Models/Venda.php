@@ -1,91 +1,32 @@
 <?php
 
-class aluguel
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+use App\Models\Cliente;
+use App\Models\ItensVenda;
+
+class Venda extends Model
 {
+    use HasFactory;
 
-    private $idaluguel;
-    private $idcliente;
-    private $diaria;
-    private $datalocacao;
-    private $combustivelatual;
-    private $nome;
-    private $ativo;
+    protected $table = "vendas";
 
-    
-    public function __construct($idaluguel, $idcliente,$diaria,$datalocacao,$combustivelatual,$nome,$ativo)
+    protected $fillable = [
+        'idcliente',
+        'valortotal',
+        'datavenda'
+    ];
+
+    public function cliente()
     {
-        $this->idaluguel = $idaluguel;
-        $this->idcliente = $idcliente;
-        $this->diaria = $diaria;
-        $this->datalocacao = $datalocacao;
-        $this->combustivelatual = $combustivelatual;
-        $this->nome = $nome; 
-        $this->ativo = $ativo;
-
-
+        return $this->belongsTo(Cliente::class, 'idcliente', 'id');
     }
 
-    public function getidaluguel()
+    function itens_venda()
     {
-        return $this->idaluguel;
-    }
-
-    public function setidaluguel($idaluguel)
-    {
-        $this->idaluguel = $idaluguel;
-    }
-
-    public function getidcliente()
-    {
-        return $this->idcliente;
-    }
-    public function setnome($nome)
-    {
-        $this->nome = $nome;
-    }
-
-    public function getnome()
-    {
-        return $this->nome;
-    }
-    public function setidcliente($idcliente)
-    {
-        $this->idcliente = $idcliente;
-    }
-
-    
-        public function getdiaria()
-    {
-        return $this->diaria;
-    }
-
-    public function setdiaria($diaria)
-    {
-        $this->diaria = $diaria;
-    }
-       
-    public function getdatalocacao()
-    {
-        return $this->datalocacao;
-    }
-    public function setdatalocacao($datalocacao)
-    {
-        $this->datalocacao = $datalocacao;
-    }
-        public function getcombustivelatual()
-    {
-        return $this->combustivelatual;
-    }
-    public function setcombustivelatual($combustivelatual)
-    {
-        $this->combustivelatual = $combustivelatual;
-    }
-        public function getativo()
-    {
-        return $this->ativo;
-    }
-    public function setativo($ativo)
-    {
-        $this->ativo = $ativo;
+        return $this->hasMany(ItensVenda::class, 'idvenda', 'id');
     }
 }
